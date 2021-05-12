@@ -1,0 +1,55 @@
+<section class="container is-fluid">
+  <div class="columns">
+    <div class="column is-3">
+
+      <h2 class="title">新規登録</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.label :email, 'Eメール', class: 'label' %>
+          <div class="control has-icons-right ">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+            <span class="icon is-small is-right">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>  
+        </div>
+
+        <div class="field">
+          <%= f.label :password, 'パスワード', class: 'label' %>
+          <div class="control has-icons-right ">
+            <%= f.password_field :password, autocomplete: "new-password", class: 'input' %>
+            <span class="icon is-small is-right">
+              <i class="fas fa-lock"></i>
+            </span>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> パスワードの最小文字数)</em>
+            <% end %><br />
+          </div>  
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, 'パスワード確認', class: 'label' %>
+          <div class="control has-icons-right ">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+            <span class="icon is-small is-right">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>  
+        </div>
+
+        <div class="actions">
+          <%= f.submit "新規登録", class: 'button is-primary is-medium' %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+
+    </div>
+
+    <div class="column is-9">
+      <%= image_pack_tag 'welcome.jpeg' %>
+    </div>
+  </div>
+</section>

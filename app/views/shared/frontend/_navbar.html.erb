@@ -28,12 +28,8 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>新規登録</strong>
-          </a>
-          <a class="button is-light">
-            ログイン
-          </a>
+            <%= link_to '新規登録', new_user_registration_path, class: 'button is-primary' %>
+            <%= link_to 'ログイン', new_user_session_path, class: 'button is-light' %>
         </div>
       </div>
     </div>

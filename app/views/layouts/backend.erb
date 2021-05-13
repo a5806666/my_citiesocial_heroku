@@ -16,6 +16,8 @@
   <body>
     <%= render '/shared/flash' if notice %>
     <%= render '/shared/backend/navbar' %>
-    <%= yield %>
+    <section class="container is-fluid">
+      <%= yield %>
+    </section>
   </body>
 </html>

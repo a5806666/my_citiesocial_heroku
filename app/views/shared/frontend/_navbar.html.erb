@@ -34,6 +34,7 @@
                 <i class="fas fa-user"></i>&nbsp;<%= current_user.email %>
               </a>
               <div class="navbar-dropdown">
+                <%= link_to "商品管理システム", admin_root_path, class: 'navbar-item' if current_user.email == "admin@gmail.com" %>
                 <%= link_to "マイページ", edit_user_registration_path, class: 'navbar-item' %>
                 <a class="navbar-item">
                   注文履歴

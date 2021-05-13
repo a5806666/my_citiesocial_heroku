@@ -31,6 +31,12 @@ class Admin::VendorsController < Admin::BaseController
             render :edit
         end
     end
+    
+    def destroy
+        # @vendor = Vendor.find(params[:id])
+        @vendor.destroy
+        redirect_to admin_vendors_path, notice: 'メーカーを削除しました!'
+    end
 
     private
     def vendor_params

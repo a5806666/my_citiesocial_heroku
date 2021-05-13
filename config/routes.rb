@@ -3,4 +3,10 @@ Rails.application.routes.draw do
   root 'products#index'
   
   resources :products, only: [:index, :show]
+
+  # 後台
+  namespace :admin do
+    root 'products#index'
+    resources :products
+  end
 end

@@ -4,3 +4,4 @@ class Vendor < ApplicationRecord
     
     scope :available, -> { where(online: true) } 
 end
+ 

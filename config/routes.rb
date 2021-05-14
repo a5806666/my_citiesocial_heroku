@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # 後台
   namespace :admin do
     root 'products#index'
-    resources :products
-    resources :vendors, expect: [:show]
+    resources :products, except: [:show]
+    resources :vendors, except: [:show]
   end
 end

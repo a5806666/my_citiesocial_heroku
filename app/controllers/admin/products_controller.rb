@@ -3,6 +3,7 @@ class Admin::ProductsController < Admin::BaseController
 
     def index
         @products = Product.all.includes(:vendor)
+        @products = Product.page(params[:page]).per(10)
     end
     
     def new

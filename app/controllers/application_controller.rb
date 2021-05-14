@@ -1,7 +1,4 @@
-require 'action_text'
-
 class ApplicationController < ActionController::Base
-    helper ActionText::Engine.helpers
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     private

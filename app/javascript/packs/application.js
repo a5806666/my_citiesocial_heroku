@@ -16,3 +16,8 @@ import "scripts/frontend" // js前端
 
 import "styles/shared" // css共享
 import "styles/frontend"// css前端
+
+// 文字編輯器
+import "styles/application"
+require("trix")
+require("@rails/actiontext")

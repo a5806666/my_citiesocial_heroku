@@ -1,5 +1,8 @@
 class Admin::ProductsController < Admin::BaseController
+    before_action :find_product, only: [:edit, :update, :destroy]
+
     def index
+        @products = Product.all.includes(:vendor)
     end
     
     def new
@@ -16,11 +19,35 @@ class Admin::ProductsController < Admin::BaseController
         end
     end
 
+    def edit
+        # @product = Product.friendly.find(params[:id])
+    end
+
+    def update
+        # @product = Product.friendly.find(params[:id])
+        if @product.update(product_params)
+        redirect_to edit_admin_product_path(@product), notice: '商品を更新しました!!'
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        # @product = Product.friendly.find(params[:id])
+        @product.destroy
+        redirect_to admin_products_path, notice: '商品を削除しました!!'
+    end
+
     private
+    def find_product
+        @product = Product.friendly.find(params[:id])
+    end
+
     def product_params
         params.require(:product).permit(:name,
                                         :vendor_id,
                                         :list_price,
-                                        :sell_price,)
+                                        :sell_price,
+                                        :on_sell)
     end
 end

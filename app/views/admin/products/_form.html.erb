@@ -35,6 +35,11 @@
     <%= form.check_box :on_sell %>
     <%= form.label :on_sell, '商品を公開する', class: 'checkbox' %>
   </div>
+  <hr>
+  <div class="field">
+    <%= form.label  :description, '商品説明', class: 'label' %>
+    <%= form.rich_text_area :description %>
+  </div>
 
   <%= form.submit class: 'button is-primary is-medium' %>
 <% end %>

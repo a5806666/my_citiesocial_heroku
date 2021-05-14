@@ -1,6 +1,9 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
+// 文字編輯器
+require("trix")
+require("@rails/actiontext")
 
 Rails.start()
 Turbolinks.start()

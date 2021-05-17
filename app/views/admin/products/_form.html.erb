@@ -43,10 +43,23 @@
 
   <hr>
   <h3 class="title is-6">在庫管理</h3>
+  <div data-controller="product-form" >
+
+    <template data-product-form-target="template">
+      <%= form.fields_for :skus, Sku.new, child_index: 'NEW_RECORD'  do |sku| %>
+        <%= render 'sku_fields', form: sku %>
+      <% end %>
+    </template>
+
     <%= form.fields_for :skus do |sku_form| %>
       <%= render 'sku_fields', form: sku_form %>
     <% end %>
 
+    <div data-product-form-target="link">
+      <%= link_to '品目追加', '#', class: 'button is-light is-small', data: {action: 'product-form#add_sku' } %>
+    </div>
 
+  </div>
+  <hr>
   <%= form.submit class: 'button is-primary is-medium' %>
 <% end %>

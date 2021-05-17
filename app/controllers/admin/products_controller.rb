@@ -8,6 +8,7 @@ class Admin::ProductsController < Admin::BaseController
     
     def new
         @product = Product.new
+        @product.skus.build
     end
 
     def create
@@ -50,6 +51,9 @@ class Admin::ProductsController < Admin::BaseController
                                         :list_price,
                                         :sell_price,
                                         :on_sell,
-                                        :description)
+                                        :description,
+                                        skus_attributes: [
+                                            :id, :spec, :quantity, :_destroy
+                                        ] )
     end
 end

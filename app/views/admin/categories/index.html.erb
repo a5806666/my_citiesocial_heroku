@@ -4,3 +4,24 @@
 <article class="message">
     <div class="message-body">ヒント:マウスを使ってタイトルを移動できる</div>
 </article>
+<table class="table is-fullwidth has-shadowed">
+    <thead>
+        <tr>
+            <th>名前</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody class="sortable-items">
+        <% @categories.each do |category| %>
+            <tr class="item" data-item="<%= dom_id(category) %>">
+                <td>
+                    <i class="fas fa-grip-lines"></i>&nbsp;<%= link_to category.name, edit_admin_category_path(category) %>
+                </td>
+                <td>
+                     <%= link_to '削除', admin_category_path(category), method: 'delete', data: {confirm: '削除しますか?' }, class: 'button is-danger is-small' %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

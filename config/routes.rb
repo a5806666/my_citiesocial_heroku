@@ -10,4 +10,14 @@ Rails.application.routes.draw do
     resources :products, except: [:show]
     resources :vendors, except: [:show]
   end
+
+  
+  # POST /api/v1/subscribe (email)
+  namespace :api do
+    namespace :v1 do
+      # 訂閱
+      post 'subscribe', to: 'utils#subscribe'
+      post 'cart', to: 'utils#cart'
+    end
+  end
 end

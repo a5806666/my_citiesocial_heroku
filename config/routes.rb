@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'products#index'
   
+  # 前台
   resources :products, only: [:index, :show]
+  resources :categories, only: [:show] # categories/:id
 
   # 後台
   namespace :admin do

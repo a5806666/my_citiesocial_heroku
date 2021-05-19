@@ -2,3 +2,13 @@
 /*! purgecss start ignore */
 @import "trix/dist/trix";
 /*! purgecss end ignore */
+
+.sortable-items {
+    .item {
+        cursor: pointer;
+    }
+}
+
+.sortable-drag {
+    background-color: gray;
+}

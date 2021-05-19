@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::BaseController
-    before_action :category_find, only: [:edit, :update, :destroy]
+    before_action :category_find, only: [:edit, :update, :destroy, :sort]
 
     def index
         @categories = Category.all.order(position: :asc)
@@ -34,6 +34,12 @@ class Admin::CategoriesController < Admin::BaseController
         # @category = Category.find(params[:id])
         @category.destroy
         redirect_to admin_categories_path, notice: 'ジャンルを削除しました!!'
+    end
+
+    def sort
+        # @category = Category.find(params[:id])
+        @category.insert_at(params[:to].to_i + 1)
+        render json: {status: 'ok'}
     end
 
     private

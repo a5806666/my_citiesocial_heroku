@@ -14,14 +14,25 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
         <div class="navbar-item field has-addons">
-            <div class="control">
+            <%# <div class="control">
                 <input class="input" type="text" placeholder="商品名検索">
             </div>
             <div class="control">
                 <a class="button is-primary">
                     <i class="fas fa-search"></i>&nbsp; 検索
                 </a>
-            </div>
+            </div> %>
+
+             <div class="control">
+          <%= form_with url: search_products_path, method: :get, local: true do |f| %>
+              <%= f.text_field :name, class: 'input', placeholder: "商品名検索" %>
+            </div>       
+            <div class="control"> 
+              <%= f.button :type => "submit", class: 'button is-primary' do %>
+                <i class="fas fa-search"></i>&nbsp; 検索
+              <% end %>
+            </div>  
+          <% end %>
         </div>
     </div>
 

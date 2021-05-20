@@ -7,4 +7,12 @@ class ProductsController < ApplicationController
     def show
         
     end
+
+    def search
+        if params[:name].present?
+          @products = Product.where('name LIKE ?', "%#{params[:name]}%")
+        else
+          @products = Product.none
+        end
+    end
 end

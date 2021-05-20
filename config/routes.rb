@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root 'products#index'
   
   # 前台
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    get :search, on: :collection
+  end
   resources :categories, only: [:show] # categories/:id
-
   # 後台
   namespace :admin do
     root 'products#index'

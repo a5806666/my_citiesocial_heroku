@@ -13,10 +13,16 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to 'メーカー', admin_vendors_path, class: 'navbar-item' %>
-      <%= link_to '商品', admin_products_path, class: 'navbar-item' %>
-      <%= link_to 'ジャンル', admin_categories_path, class: 'navbar-item' %>
+      <%= link_to 'メーカー管理', admin_vendors_path, class: 'navbar-item' %>
+      <%= link_to '商品管理', admin_products_path, class: 'navbar-item' %>
+      <%= link_to 'ジャンル管理', admin_categories_path, class: 'navbar-item' %>
     </div>
-</div>
+    <hr>
+    <div class="navbar-end">
+      <%= link_to root_path, class: 'navbar-item' do %>
+        <i class="fas fa-undo-alt"></i>&ensp; ホームページに戻る
+      <% end %>
+    </div>
+  </div>  
 </nav>
 <br>

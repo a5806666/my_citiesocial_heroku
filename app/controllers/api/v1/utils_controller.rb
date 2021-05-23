@@ -15,12 +15,14 @@ class Api::V1::UtilsController < ApplicationController
         product = Product.friendly.find(params[:id])
         
         if product
-            cart = Cart.from_hash(session[:cart_9527])
-            cart.add_item(product.code)
+            # cart = Cart.from_hash(session[:cart_9527])
 
-            session[:cart_9527] = cart.serialize
+            # ↓application_controller.rb定義的方法取代了上面
+            current_cart.add_item(product.code)
 
-            render json: { status: 'ok', items: cart.items.count }
+            session[:cart_9527] = current_cart.serialize
+
+            render json: { status: 'ok', items: current_cart.items.count }
         end
     end
 end

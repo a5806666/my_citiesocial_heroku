@@ -19,13 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
-  
-  # POST /api/v1/subscribe (email)
   namespace :api do
     namespace :v1 do
       # 訂閱
-      post 'subscribe', to: 'utils#subscribe'
-      post 'cart', to: 'utils#cart'
+      post 'subscribe', to: 'utils#subscribe' # POST /api/v1/subscribe (email)
+      # 購物車
+      post 'cart', to: 'utils#cart' # POST /api/v1/cart (購物車)
     end
   end
 end

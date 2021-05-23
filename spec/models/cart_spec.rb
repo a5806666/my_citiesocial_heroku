@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
   let(:cart) { Cart.new }
-
+  # let(:cart) { Cart.new } 寫了這行 可以取代 cart = Cart.new
   context "基本功能" do
     it "可以把商品丟到到購物車裡，然後購物車裡就有東西了。" do
       # cart = Cart.new

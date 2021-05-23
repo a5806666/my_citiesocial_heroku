@@ -24,7 +24,7 @@
       </article>
     </div>
 
-    <div class="column is-5">
+    <div class="column is-5" data-controller="product" data-product-id="<%= @product.code %>">
       <h3 class="has-text-grey-light"><%= @product.vendor.title %></h3>
       <h2 class="title is-4"><%= @product.name %></h2>
       <p class="has-text-primary is-size-4">
@@ -56,7 +56,7 @@
         </div>
         <div class="column is-9 field is-grouped">
           <a href="#" class="button is-white is-medium" data-action="product#quantity_minus">-</a>
-          <input type="number" name="quantity" data-product-target="quantity" class="input is-medium has-text-centered" value="1">
+          <input type="number" name="quantity" data-product-target="quantity" class="input is-medium has-text-centered" value="1" min="1" oninput="validity.valid||(value='');">
           <a href="#" class="button is-white is-medium" data-action="product#quantity_plus">+</a>
         </div>
       </div>

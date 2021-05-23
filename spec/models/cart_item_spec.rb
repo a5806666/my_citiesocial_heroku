@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CartItem, type: :model do
+  let(:cart) { Cart.new }
+
   it "每個 Cart Item 都可以計算它自己的金額（小計）。" do
-      cart = Cart.new
+      # cart = Cart.new
+
       p1 = FactoryBot.create(:product, sell_price: 5)
       p2 = FactoryBot.create(:product, sell_price: 10)
 

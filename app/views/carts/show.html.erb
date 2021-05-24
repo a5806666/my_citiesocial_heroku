@@ -1,0 +1,30 @@
+<section class="container is-fluid">
+    <h1 class="title">カート</h1>
+    
+    <table class="table is-fullwidth">
+        <thead>
+            <tr>
+                <th>品目</th>
+                <th>販売価格</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% current_cart.items.each do |item| %>
+                <tr>
+                    <td><%= item.product.name %></td>
+                    <td><%= item.product.sell_price %></td>
+                    <td><%= item.quantity %></td>
+                    <td><%= item.total_price %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">合計</td>
+                <td class="is-size-6 has-text-weight-bold has-text-danger"><%= current_cart.total_price %></td>
+            </tr>
+        </tfoot>
+    </table>
+</section>

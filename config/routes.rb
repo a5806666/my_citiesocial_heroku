@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     get :search, on: :collection
   end
+  # 前台 - 購物車cart
+  resource :cart, only: [:show, :destroy]
+  # 前台 - 類別
   resources :categories, only: [:show] # categories/:id
   # 後台
   namespace :admin do

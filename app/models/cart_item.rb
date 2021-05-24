@@ -11,11 +11,10 @@ class CartItem
     end
 
     def product
-        Product.find_by(id: product_id)
+        Product.friendly.find(product_id)
     end
 
     def total_price
-        product = Product.find_by(id: product_id)
         product.sell_price * @quantity
     end
 end

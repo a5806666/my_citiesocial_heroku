@@ -24,8 +24,8 @@ export default class extends Controller {
 
             Rails.ajax({
                 url: "/api/v1/cart",
-                type: 'POST',
-                data: data,
+                data,
+                type: "POST",
                 success: (resp) => {
                     // console.log(resp);
                     if (resp.status == 'ok') {
@@ -50,7 +50,7 @@ export default class extends Controller {
         let value = Number(this.quantityTarget.value);   
         // console.log(value)
         if (value > 1) {
-            this.quantityTarget.value = value - 1
+            this.quantityTarget.value = value - 1;
         }
     }
 
@@ -58,6 +58,6 @@ export default class extends Controller {
         event.preventDefault();
         let value = Number(this.quantityTarget.value);  
         // console.log(value)
-        this.quantityTarget.value = value + 1
+        this.quantityTarget.value = value + 1;
     }
 }

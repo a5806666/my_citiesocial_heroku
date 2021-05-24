@@ -32,12 +32,12 @@
         <div class="buttons">
           <% if user_signed_in? %>
             <div class="navbar-item" data-controller="cart">
-              <%# <%= link_to cart_path do %> 
+              <%= link_to cart_path do %> 
                 <i class="fas fa-shopping-cart"></i>
-                <span data-target="cart.count" data-action="addToCart@document->cart#updateCart">
+                <span data-cart-target="count" data-action="addToCart@document->cart#updateCart">
                     (<%= current_cart.items.count %>)
                 </span>
-              <%# <% end %>
+              <% end %>
             </div>
 
             <div class="navbar-item has-dropdown is-hoverable">

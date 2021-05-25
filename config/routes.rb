@@ -6,15 +6,26 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show] do
     get :search, on: :collection
   end
+
+  # 前台 - 類別
+  resources :categories, only: [:show] # categories/:id
+
   # 前台 - 購物車cart
   resource :cart, only: [:show, :destroy] do
     collection do
       get :checkout
-    end
+    end    
   end
 
-  # 前台 - 類別
-  resources :categories, only: [:show] # categories/:id
+  # 前台 - 訂單
+  resources :orders, except: [:new, :edit, :update, :destroy] do
+    member do
+      delete :cancel   # /orders/8/cancel
+      post :pay        # /orders/8/pay
+      get :pay_confirm # /orders/8/pay_confirm
+    end
+  end
+  
   # 後台
   namespace :admin do
     root 'products#index'

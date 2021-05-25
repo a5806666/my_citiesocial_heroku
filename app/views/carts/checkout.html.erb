@@ -3,4 +3,34 @@
     <%= render 'cart' %>
     <hr>
     <h2 class="title is-5">お届け先</h2>
+
+    <%= form_with(model: @order) do |form| %>
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                <%= form.label :recipient, '名前', class: 'label' %>
+                <%= form.text_field :recipient, class: 'input is-medium' %>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                <%= form.label :tel, '電話番号', class: 'label' %>
+                <%= form.text_field :tel, class: 'input is-medium' %>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                <%= form.label :address, '住所', class: 'label' %>
+                <%= form.text_field :address, class: 'input is-medium' %>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <%= form.label :note, '備考欄', class: 'label' %>
+            <%= form.text_area :note, class: 'textarea is-medium' %>
+        </div>
+        <div class="field">
+            <%= form.submit 'Line Pay 決済', class: 'button is-primary is-medium', data: { confirm: '決済しますか？' } %>
+        </div>
+    <% end %> 
 </section>

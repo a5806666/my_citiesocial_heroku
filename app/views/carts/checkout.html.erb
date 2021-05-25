@@ -8,25 +8,25 @@
         <div class="columns">
             <div class="column">
                 <div class="field">
-                <%= form.label :recipient, '名前', class: 'label' %>
+                <%= form.label :recipient, '名前(必須)', class: 'label has-text-danger' %>
                 <%= form.text_field :recipient, class: 'input is-medium' %>
                 </div>
             </div>
             <div class="column">
                 <div class="field">
-                <%= form.label :tel, '電話番号', class: 'label' %>
+                <%= form.label :tel, '電話番号(必須)', class: 'label has-text-danger' %>
                 <%= form.text_field :tel, class: 'input is-medium' %>
                 </div>
             </div>
             <div class="column">
                 <div class="field">
-                <%= form.label :address, '住所', class: 'label' %>
+                <%= form.label :address, '住所(必須)', class: 'label has-text-danger' %>
                 <%= form.text_field :address, class: 'input is-medium' %>
                 </div>
             </div>
         </div>
         <div class="field">
-            <%= form.label :note, '備考欄', class: 'label' %>
+            <%= form.label :note, '備考欄(任意)', class: 'label' %>
             <%= form.text_area :note, class: 'textarea is-medium' %>
         </div>
         <div class="field">

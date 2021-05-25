@@ -1,0 +1,6 @@
+google_app_id: ''
+google_app_secret: ''
+
+line_pay_channel_id: ""
+line_pay_channel_secret: ""
+line_pay_endpoint: 'https://sandbox-api-pay.line.me'

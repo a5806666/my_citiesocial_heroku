@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
     def create
         @order = current_user.orders.build(order_params)
-
+        
         current_cart.items.each do |item|
             @order.order_items.build(sku_id: item.sku_id, quantity: item.quantity)
         end
@@ -17,15 +17,24 @@ class OrdersController < ApplicationController
                 req.body = {
                     productName: "注文内容", 
                     amount: current_cart.total_price.to_i, 
-                    currency: "TWD", 
-                    confirmUrl: "http://localhost:3000/orders/confirm", 
+                    currency: "TWD",
+                    # 本機 
+                    confirmUrl: "http://localhost:3000/orders/confirm",
+                    # heroku
+                    # confirmUrl: "https://serene-harbor-48921.herokuapp.com/orders/confirm",
                     orderId: @order.num
                 }.to_json
             end
-            
-            redirect_to root_path, notice: '支払いが完了しました'
-        else
-            render 'carts/checkout'
+
+            result = JSON.parse(resp.body)
+
+            if result["returnCode"] == "0000"
+                payment_url = result["info"]["paymentUrl"]["web"]
+                redirect_to payment_url
+            else
+                flash[:notice] = '決済失敗'
+                render 'carts/checkout'
+            end
         end
     end
 

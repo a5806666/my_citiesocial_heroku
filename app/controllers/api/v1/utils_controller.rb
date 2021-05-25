@@ -12,13 +12,14 @@ class Api::V1::UtilsController < ApplicationController
 
     def cart
         # 找商品
-        product = Product.friendly.find(params[:id])
+        # product = Product.friendly.find(params[:id])
+        product = Product.joins(:skus).find_by(skus: { id: params[:sku]})
         
         if product
             # cart = Cart.from_hash(session[:cart_9527])
 
             # ↓application_controller.rb定義的方法取代了上面
-            current_cart.add_item(product.code)
+            current_cart.add_sku(params[:sku])
 
             session[:cart_9527] = current_cart.serialize
 

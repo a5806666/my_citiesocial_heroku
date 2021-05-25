@@ -35,6 +35,7 @@ gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem "aws-sdk-s3", require: false
 gem 'acts_as_list', '~> 1.0', '>= 1.0.4'
 gem 'faraday', '~> 1.4', '>= 1.4.2'
+gem 'aasm', '~> 5.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

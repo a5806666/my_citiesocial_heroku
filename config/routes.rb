@@ -19,10 +19,10 @@ Rails.application.routes.draw do
 
   # 前台 - 訂單
   resources :orders, except: [:new, :edit, :update, :destroy] do
-    member do
+    collection do
       delete :cancel   # /orders/8/cancel
       post :pay        # /orders/8/pay
-      get :pay_confirm # /orders/8/pay_confirm
+      get :confirm # /orders/8/pay_confirm
     end
   end
   

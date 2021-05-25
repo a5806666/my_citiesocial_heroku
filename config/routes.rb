@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
   # 前台 - 購物車cart
-  resource :cart, only: [:show, :destroy]
+  resource :cart, only: [:show, :destroy] do
+    collection do
+      get :checkout
+    end
+  end
+
   # 前台 - 類別
   resources :categories, only: [:show] # categories/:id
   # 後台

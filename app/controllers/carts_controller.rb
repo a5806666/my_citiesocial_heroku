@@ -8,4 +8,8 @@ class CartsController < ApplicationController
         session[:cart_9527] = nil
         redirect_to root_path, notice: 'ショッピングカートが空になりました'
     end
+
+    def checkout
+        
+    end
 end

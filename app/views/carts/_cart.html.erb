@@ -1,0 +1,35 @@
+ <% if current_cart.empty? %>
+        <p class="has-text-centered is-size-4">お客様のカートに商品はありません。</p><br />
+        <div class="buttons has-addons is-centered">
+            <%= link_to '買い物を続ける', root_path, class: 'button is-medium is-info' %>
+        </div>
+    <% else %>
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>品目</th>
+                    <th>販売価格</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% current_cart.items.each do |item| %>
+                    <tr>
+                        <td><%= item.product.name %></td>
+                        <td><%= item.product.sell_price %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= item.total_price %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">合計</td>
+                    <td class="is-size-6 has-text-weight-bold has-text-danger"><%= current_cart.total_price %></td>
+                </tr>
+            </tfoot>
+        </table>
+        <%= link_to '買い物を続ける', root_path, class: 'button is-medium' %>
+        <%= link_to 'レジに進む', checkout_cart_path, class: 'button is-medium is-danger' %>
+    <% end %>

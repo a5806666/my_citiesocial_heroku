@@ -19,9 +19,9 @@ class OrdersController < ApplicationController
                     amount: current_cart.total_price.to_i, 
                     currency: "TWD",
                     # 本機 
-                    confirmUrl: "http://localhost:3000/orders/confirm",
+                    # confirmUrl: "http://localhost:3000/orders/confirm",
                     # heroku
-                    # confirmUrl: "https://serene-harbor-48921.herokuapp.com/orders/confirm",
+                    confirmUrl: "https://serene-harbor-48921.herokuapp.com/orders/confirm",
                     orderId: @order.num
                 }.to_json
             end

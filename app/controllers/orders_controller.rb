@@ -94,6 +94,62 @@ class OrdersController < ApplicationController
             @order.cancel!
             redirect_to orders_path, notice: "注文番号: #{@order.num} キャンセルしました!"
         end
+    end  
+
+    def pay
+        @order = current_user.orders.find(params[:id])
+
+        resp = Faraday.post("#{ENV['line_pay_endpoint']}/v2/payments/request") do |req|
+                req.headers['Content-Type'] = 'application/json'
+                req.headers['X-LINE-ChannelId'] = ENV['line_pay_channel_id']
+                req.headers['X-LINE-ChannelSecret'] = ENV['line_pay_channel_secret']
+                req.body = {
+                    productName: "注文内容", 
+                    amount: @order.total_price.to_i, 
+                    currency: "TWD",
+                    # 本機  
+                    # confirmUrl: "http://localhost:3000/orders/#{@order.id}/pay_confirm",
+                    # heroku
+                    confirmUrl: "https://serene-harbor-48921.herokuapp.com/orders/#{@order.id}/pay_confirm", 
+                    orderId: @order.num
+                }.to_json
+        end
+
+        result = JSON.parse(resp.body)
+
+        if result["returnCode"] == "0000"
+            payment_url = result["info"]["paymentUrl"]["web"]
+            redirect_to payment_url
+        else
+            redirect_to orders_path, notice: '決済失敗'
+        end
+    end
+
+    def pay_confirm
+        @order = current_user.orders.find(params[:id])
+
+        resp = Faraday.post("#{ENV['line_pay_endpoint']}/v2/payments/#{params[:transactionId]}/confirm") do |req|
+                req.headers['Content-Type'] = 'application/json'
+                req.headers['X-LINE-ChannelId'] = ENV['line_pay_channel_id']
+                req.headers['X-LINE-ChannelSecret'] = ENV['line_pay_channel_secret']
+                req.body = {
+                    amount: @order.total_price.to_i, 
+                    currency: "TWD", 
+                }.to_json
+        end
+
+        result = JSON.parse(resp.body)
+
+        if result["returnCode"] = '0000'
+            transaction_id = result["info"]["transactionId"]
+
+            # 1. 變更 order 狀態
+            @order.pay!(transaction_id: transaction_id)
+
+            redirect_to orders_path, notice: '支払いが完了しました'
+        else
+            redirect_to orders_path, notice: '決済失敗'
+        end
     end
 
     private

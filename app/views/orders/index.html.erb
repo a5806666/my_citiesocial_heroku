@@ -19,7 +19,7 @@
                         <td><%= order.total_price %></td>
                         <td><%= order.state %></td>
                         <td>
-                            <%= link_to '決済', '#', method: 'post', data: {confirm: "決済しますか？"}, class: 'button is-primary is-small' if order.may_pay? %>
+                            <%= link_to '決済', pay_order_path(order), method: 'post', data: {confirm: "決済しますか？"}, class: 'button is-primary is-small' if order.may_pay? %>
                             <%= link_to 'キャンセル', cancel_order_path(order), method: 'delete', data:{confirm: "本当にキャンセルしますか？"}, class: 'button is-danger is-small' if order.may_cancel? %>
                         </td>
                     <% end %>

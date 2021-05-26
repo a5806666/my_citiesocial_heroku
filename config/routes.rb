@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   resources :orders, except: [:new, :edit, :update, :destroy] do
     member do
       delete :cancel   #取消 /orders/8/cancel
-      post :pay        #在付款 /orders/8/pay
+      post :pay        #再付款 /orders/8/pay
+      get :pay_confirm # /orders/8/pay_confirm
     end
     collection do
       get :confirm     #付款 /orders/confirm

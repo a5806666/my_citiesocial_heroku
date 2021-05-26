@@ -1,43 +1,60 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container is-fluid">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <h2 class='title'>アカウント管理</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <div class="field">
+      <%= f.label :email, 'Eメール', class: 'label' %>
+      <div class="control has-icons-left">
+        <%= f.email_field :email, autocomplete: "email", class: 'input is-medium' %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password, '新しいパスワード', class: 'label' %> <i>(変更したくない場合は空白のままにします)</i><br />
+      <div class="control has-icons-left">
+        <%= f.password_field :password, autocomplete: "new-password", class: 'input is-medium' %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> パスワードの最小文字数)</em>
+        <% end %><br />
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation, '新しいパスワード再入力', class: 'label' %>
+      <div class="control has-icons-left">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input is-medium' %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :current_password, '現在のパスワード', class: 'label' %>
+      <div class="control has-icons-left">
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'input is-medium' %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </div>
+    </div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+    <p class="butons">
+      <%= f.submit "変更する", class: 'button is-primary is-medium' %>
+      <%= link_to "ホームページに戻る", :back, class: 'button is-outlined is-medium' %>
+    </p>
+  <% end %>
+</div>

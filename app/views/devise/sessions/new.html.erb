@@ -36,9 +36,12 @@
           </div>
         <% end %>
 
-        <div class="actions">
-          <%= f.submit "ログイン", class: 'button is-primary is-normal' %>
-        </div>
+        <p class="buttons">
+          <%= f.submit "ログイン", class: 'button is-primary is-medium' %>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "新規登録", new_registration_path(resource_name),class: 'button is-outlined is-medium' %><br />
+          <% end %>
+        </p>
 
       <% end %>
       <%= render "devise/shared/links" %>

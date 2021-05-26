@@ -1,6 +1,6 @@
 <section class="container is-fluid">
     <h1 class="title">会計</h1>
-    <%= render 'cart' %>
+    <%= render 'checkout' %>
     <hr>
     <h2 class="title is-5">お届け先</h2>
 
@@ -9,19 +9,19 @@
             <div class="column">
                 <div class="field">
                 <%= form.label :recipient, '名前(必須)', class: 'label has-text-danger' %>
-                <%= form.text_field :recipient, class: 'input is-medium' %>
+                <%= form.text_field :recipient, class: 'input is-medium', required: true %>
                 </div>
             </div>
             <div class="column">
                 <div class="field">
                 <%= form.label :tel, '電話番号(必須)', class: 'label has-text-danger' %>
-                <%= form.text_field :tel, class: 'input is-medium' %>
+                <%= form.text_field :tel, class: 'input is-medium', required: true %>
                 </div>
             </div>
             <div class="column">
                 <div class="field">
                 <%= form.label :address, '住所(必須)', class: 'label has-text-danger' %>
-                <%= form.text_field :address, class: 'input is-medium' %>
+                <%= form.text_field :address, class: 'input is-medium', required: true %>
                 </div>
             </div>
         </div>

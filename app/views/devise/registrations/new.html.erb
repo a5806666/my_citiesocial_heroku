@@ -40,10 +40,15 @@
           </div>  
         </div>
 
-        <div class="actions">
+        <p class="buttons">    
           <%= f.submit "新規登録", class: 'button is-primary is-medium' %>
-        </div>
+          
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "ログイン", new_session_path(resource_name),class: 'button is-outlined is-medium' %><br />
+          <% end %>
+        </p>
       <% end %>
+      <br>
       <%= render "devise/shared/links" %>
 
     </div>

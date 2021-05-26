@@ -28,6 +28,11 @@ class Order < ApplicationRecord
     end
   end
 
+  # 計算訂單總金額(注文履歴view )
+  def total_price
+    order_items.reduce(0) { |sum, item| sum + item.total_price }
+  end
+
   # 建立LINE PAY交易代碼
   before_create :generate_order_num
   private

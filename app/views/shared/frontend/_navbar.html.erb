@@ -33,8 +33,8 @@
           <% if user_signed_in? %>
             <div class="navbar-item" data-controller="cart">
               <%= link_to cart_path do %> 
-                <i class="fas fa-shopping-cart"></i>
-                <span data-cart-target="count" data-action="addToCart@document->cart#updateCart">
+                <i class="fas fa-shopping-cart has-text-primary is-size-5"></i>
+                <span data-cart-target="count" class="has-text-primary" data-action="addToCart@document->cart#updateCart">
                     (<%= current_cart.items.count %>)
                 </span>
               <% end %>
@@ -42,7 +42,7 @@
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                <i class="fas fa-user"></i>&nbsp;<%= current_user.email %>
+                <i class="fas fa-user has-text-black"></i>&nbsp;<span class="has-text-black"><%= current_user.email %></span>
               </a>
               <div class="navbar-dropdown">
                 <%= link_to "商品管理システム", admin_root_path, class: 'navbar-item' if current_user.email == "admin@gmail.com" %>

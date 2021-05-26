@@ -7,7 +7,7 @@ RSpec.describe Cart, type: :model do
     it "可以把商品丟到到購物車裡，然後購物車裡就有東西了。" do
       # cart = Cart.new
 
-      cart.add_sku(2)
+      cart.add_sku(2,1)
       
       expect(cart.empty?).to be false
     end
@@ -15,11 +15,11 @@ RSpec.describe Cart, type: :model do
     it "加了相同種類的商品到購物車裡，購買項目（CartItem）並不會增加，但商品的數量會改變" do
       # cart = Cart.new
 
-      3.times { cart.add_sku(1) }
-      2.times { cart.add_sku(2) }
+      3.times { cart.add_sku(1,5) }
+      2.times { cart.add_sku(2,1) }
 
       expect(cart.items.count).to be 2
-      expect(cart.items.first.quantity).to be 3
+      expect(cart.items.first.quantity).to be 15
     end
 
     it "商品可以放到購物車裡，也可以再拿出來" do
@@ -29,7 +29,7 @@ RSpec.describe Cart, type: :model do
       # p1 = Product.create(name: 'p1', list_price: '10', sell_price: '5', vendor: v1)
       p1 = FactoryBot.create(:product, :with_skus)
 
-      cart.add_sku(p1.skus.first.id)
+      cart.add_sku(p1.skus.first.id, 2)
 
       expect(cart.items.first.product).to be_a Product
     end
@@ -40,10 +40,10 @@ RSpec.describe Cart, type: :model do
       p1 = FactoryBot.create(:product, :with_skus, sell_price: 5)
       p2 = FactoryBot.create(:product, :with_skus, sell_price: 10)
 
-      3.times { cart.add_sku(p1.skus.first.id) }
-      2.times { cart.add_sku(p2.skus.first.id) }
+      3.times { cart.add_sku(p1.skus.first.id, 1) }
+      2.times { cart.add_sku(p2.skus.first.id, 2) }
       
-      expect(cart.total_price).to eq 35
+      expect(cart.total_price).to eq 55
     end
   end
 
@@ -54,8 +54,8 @@ RSpec.describe Cart, type: :model do
       p1 = FactoryBot.create(:product, :with_skus)
       p2 = FactoryBot.create(:product, :with_skus)
 
-      3.times { cart.add_sku(p1.id) }
-      2.times { cart.add_sku(p2.id) }
+      3.times { cart.add_sku(p1.id, 2) }
+      2.times { cart.add_sku(p2.id, 1) }
 
       expect(cart.serialize).to eq cart_hash
     end
@@ -63,14 +63,14 @@ RSpec.describe Cart, type: :model do
     it "也可以存放在 Session 的內容（Hash 格式），還原成購物車的內容" do
       cart = Cart.from_hash(cart_hash)
 
-      expect(cart.items.first.quantity).to be 3
+      expect(cart.items.first.quantity).to be 6
     end
 
     private
     def cart_hash
       {
         "items" => [
-          {"sku_id" => 1, "quantity" =>3},
+          {"sku_id" => 1, "quantity" =>6},
           {"sku_id" => 2, "quantity" =>2},
         ]
       }

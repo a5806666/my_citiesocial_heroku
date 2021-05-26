@@ -19,7 +19,7 @@ class Api::V1::UtilsController < ApplicationController
             # cart = Cart.from_hash(session[:cart_9527])
 
             # ↓application_controller.rb定義的方法取代了上面
-            current_cart.add_sku(params[:sku])
+            current_cart.add_sku(params[:sku], params[:quantity].to_i)
 
             session[:cart_9527] = current_cart.serialize
 

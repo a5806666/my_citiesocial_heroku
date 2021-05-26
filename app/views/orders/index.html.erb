@@ -13,7 +13,7 @@
         <tbody>
             <% @orders.each do |order| %>
                 <tr>
-                    <% if not order.state == "cancelled" %>
+                    <%# <% if not order.state == "cancelled" %>
                         <td><%= order.created_at %></td>
                         <td><%= order.num %></td>
                         <td><%= order.total_price %></td>
@@ -21,12 +21,14 @@
                             <td>決済</td>
                         <% elsif order.state == "pending" %>
                             <td>未決済</td>
+                        <% else %>
+                            <td>決済キャンセル</td>
                         <% end %>
                         <td>
                             <%= link_to '決済', pay_order_path(order), method: 'post', data: {confirm: "決済しますか？"}, class: 'button is-primary is-small' if order.may_pay? %>
                             <%= link_to 'キャンセル', cancel_order_path(order), method: 'delete', data:{confirm: "本当にキャンセルしますか？"}, class: 'button is-danger is-small' if order.may_cancel? %>
                         </td>
-                    <% end %>
+                    <%# <% end %>
                 </tr>
             <% end %>
         </tbody>

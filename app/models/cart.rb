@@ -27,13 +27,13 @@ class Cart
         end
     end
 
-    def add_sku(sku_id)
+    def add_sku(sku_id, quantity)
         found = @items.find { |cart_item| cart_item.sku_id == sku_id }
 
         if found
-            found.increment!
+            found.increment!(quantity)
         else
-            @items << CartItem.new(sku_id)
+            @items << CartItem.new(sku_id, quantity)
         end
 
         

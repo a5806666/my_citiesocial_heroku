@@ -19,10 +19,10 @@
 
 ```
 ---
-## 使い方の紹介
+## 使い方の紹介　／　URL：<font size="4">**https://serene-harbor-48921.herokuapp.com/**</font>
 ### トップ画面
 ```markdown
-記事リストが一覧で表示されている、気に入りる記事の下にコメントやいいね付くことができます。
+商品リストが一覧で表示されている、気に入りる記事の下にコメントやいいね付くことができます。
 ```
 ![](https://i.imgur.com/Fy5YNIe.gif)
 
@@ -45,11 +45,6 @@
 
 ```
 ![](https://i.imgur.com/d37r7LW.gif)
-
----
-
-## URL：
-<font size="4">**https://serene-harbor-48921.herokuapp.com/**</font>
 
 ---
 
@@ -101,4 +96,6 @@
     * いいね機能（Ajax）
         * 人気記事ランキング機能（ホームページ）
   
-        
+## テスト
+* RSpec
+    * カートテスト(models spec)

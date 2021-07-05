@@ -34,7 +34,8 @@
 
 記事一覧：記事を再編集、公開をキャンセル、記事を削除。
 ```
-![](https://i.imgur.com/MVNf58v.gif)
+<!-- ![](https://i.imgur.com/jIXsrod.gif) -->
+![](https://i.imgur.com/g7YZzHA.gif)
 
 
 ---

@@ -24,7 +24,7 @@
 ```markdown
 記事リストが一覧で表示されている、気に入りる記事の下にコメントやいいね付くことができます。
 ```
-![](https://i.imgur.com/O0FZnvF.gif)
+
 
 ---
 
@@ -34,7 +34,8 @@
 
 記事一覧：記事を再編集、公開をキャンセル、記事を削除。
 ```
-![](https://i.imgur.com/cvJHzPr.gif)
+
+![](https://i.imgur.com/5dM0CNh.gif)
 
 
 ---

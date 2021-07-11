@@ -1,22 +1,15 @@
 # [Mycitiesocial](https://serene-harbor-48921.herokuapp.com/)
 ###### tags: `github` 
 <font size="4">**アプリケーション概要：**</font>
-
 ```markdown
-余計なものを省いて、使いやすくしたブログです。
-
-有名なブログ「medium」の機能を参考して作成いたしました。
-写真付きの記事が投稿できる、お気に入りの記事にコメントやいいね！付くことができます。
-
-就職活動用のポートフォリオとして制作致しました。
+ウェブデザインと決済手続きをシンプル化し、ユーザーが使いやすいECサイトです。
 ```
 
 <font size="4">**作成の目的：**</font>
-<!-- 透過Ruby on Rails來建立部落格過程中，初步了解Rails框架的基本使用規則與原理。 -->
-<!-- Railsのルーティング、Gem的相關使用方法、資料庫的建立相關規則。 -->
-<!-- 在這次的專案中我學會了。 -->
+<!-- 現在越來越多使用者在網路上購買東西而且在日line使用率也非常高 -->
 ```markdown
-
+line payのような電子決済サービスと連携するオンラインショップの使用者がだんだん増えてくるので、
+ユーザのニーズを満足させるため、操作がシンプルでスマホ決済ができる便利なECサイトを作りたいと思います。
 ```
 ---
 
@@ -39,7 +32,7 @@
 ## 使い方の紹介　／　URL：<font size="4">**https://serene-harbor-48921.herokuapp.com/**</font>
 ### トップ画面
 ```markdown
-商品リストが一覧で表示されている、商品名検索または商品ジャンルから探することもできます。
+商品リストが一覧で表示されていて、商品名検索または商品ジャンルから探することもできます。
 
 欲しい商品があったら品目と数を入力してカートに入れましょう。
 ```
@@ -52,7 +45,7 @@
 カート画面：購入したい商品価格と数と合計を再確認したら、レジに進み注文を確定します。
 ほかには商品を削除、買い物を続けるもできます。
 
-会計画面：お届け先を入力して、Line Pay 決済ボタンをしたら、決済ページに移動します。
+会計画面：お届け先を入力して、Line Pay 決済ボタン押したら、決済ページに移動します。
 
 LINE Pay決済：スマホのlineで画面に表示されるQRコードをスキャンして、
 表示された金額を確認完了後、決済しましょう。（LINE Pay決済はサンドボックスモードです。ご安心ください）
@@ -70,7 +63,7 @@ LINE Pay決済：スマホのlineで画面に表示されるQRコードをスキ
 
 メーカー管理：メーカーに関する名前、説明、公開など追加や編集を行います
 
-ジャンル管理：商品をジャンルごとに分類して表示すること機能です。
+ジャンル管理：商品をジャンルごとに分類して表示する機能です。
 ジャンルの表示順序を並び替えると、トップページの表示場所はジャンル管理の表示順序によって異なります。
 
 商品管理：登録した商品が一覧で表示されている、または商品を追加、在庫管理、編集、削除などもできます。
@@ -86,9 +79,8 @@ LINE Pay決済：スマホのlineで画面に表示されるQRコードをスキ
 * postgreSQL 13.2
 * Stimulus
 * CSS/bulma
-* GitHub
 * Postman
-* Sourcetree
+* GitHub
 * Heroku
 * AWS
     * S3
@@ -99,18 +91,15 @@ LINE Pay決済：スマホのlineで画面に表示されるQRコードをスキ
 
 ### フロントエンド
 
-* ユーザー登録機能、ログイン機能（[devise](https://hackmd.io/nYCmlVBYTgGy4vYKYyr-Gw)）
-    * アカウント管理機能（devise）
-        * パスワードの変更、ユーザー名を設定する、プロフィール画像をアップロード（[Active Storage](https://hackmd.io/@7beedhBrQk2FjyAtSY5wxQ/SyHnoXCwd)）
-    * 記事一覧機能
-        * 記事を再編集．公開をキャンセル（[AASM](https://github.com/aasm/aasm)）、記事を削除（[paranoia](https://github.com/rubysherpas/paranoia)）
-        * ページネーション機能（[Kaminari](https://qiita.com/residenti/items/1ae1e5ceb59c0729c0b9)）
-    * 会員登録機能（**決済するのみです**）（[braintree-sandbox](https://developers.braintreepayments.com/start/overview)）
-* 記事を投稿する機能（AASM）
-    * 記事画像をアップロード（Active Storage）
-* 記事にコメントを付ける機能（Ajax）
-    * いいね機能（Ajax）
-        * 人気記事ランキング機能（ホームページ）
+* ユーザー登録機能、Google ＆ ログイン機能（[devise](https://hackmd.io/nYCmlVBYTgGy4vYKYyr-Gw)、[omniauth-google-oauth2](https://github.com/zquestz/omniauth-google-oauth2)）
+    * マイページ機能（devise）
+        * パスワードの変更
+    * カート機能
+        * Line Pay 決済機能（Line Pay、[faraday](https://lostisland.github.io/faraday/)）
+    * 注文履歴機能
+        * 注文履歴の確認や再決済・キャンセル（[AASM](https://github.com/aasm/aasm)）
+* 商品名検索機能 
+
 ### バックエンド
 
 * メーカー管理機能

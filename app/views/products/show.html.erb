@@ -60,7 +60,11 @@
           <a href="#" class="button is-white is-medium" data-action="product#quantity_plus">+</a>
         </div>
       </div>
-      <a href="#" class="button is-primary is-medium is-fullwidth" data-product-target="addToCartButton" data-action="product#add_to_cart">カートに入れる</a>
+      <% if user_signed_in? %> 
+        <a href="#" class="button is-primary is-medium is-fullwidth" data-product-target="addToCartButton" data-action="product#add_to_cart">カートに入れる</a>
+      <% else %>
+        <%= link_to 'カートに入れる', new_user_session_path, class: 'button is-primary is-medium is-fullwidth' %>
+      <% end %>
     </div>
   </div>
 </section>
